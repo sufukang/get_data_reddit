@@ -1,0 +1,30 @@
+# 如何利用python爬取reddit的数据
+- 利用reddit本身的API
+- 登录https://www.reddit.com/prefs/apps/进行注册
+- https://cloud.tencent.com/developer/article/2357018 具体操作步骤
+![image](https://github.com/user-attachments/assets/e7dc58a9-cb6d-40cb-9e88-234c128b6318)
+
+```python
+import praw
+reddit = praw.Reddit(
+    client_id="",#具体要填的东西
+    client_secret="",
+    user_agent="",  # 格式：<平台>:<应用名>:v1.0 (by /u/<用户名>)
+)
+
+# 获取 subreddit 的帖子（例如 r/python）
+subreddit = reddit.subreddit("python")
+for submission in subreddit.hot(limit=10):
+    print(f"标题: {submission.title}")
+    print(f"作者: {submission.author}")
+    print(f"点赞数: {submission.score}")
+    print(f"URL: {submission.url}\n")
+
+```
+
+![image](https://github.com/user-attachments/assets/ca5fb601-f4de-4c15-8a00-c0af43d22326)
+
+
+
+
+
